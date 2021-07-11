@@ -12,6 +12,8 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
