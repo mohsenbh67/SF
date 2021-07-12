@@ -8,3 +8,8 @@ body {
     direction: rtl;
     text-align: right;
 }
+
+label{
+    margin-bottom: .25rem;
+    margin-top: .7rem;
+}
