@@ -96,7 +96,14 @@ return [
     |
     */
     'attributes' => array(
-        '' => '',
+
+        "email" => "ایمیل",
+        "title" => "عنوان",
+        "first_name" => "نام",
+        "last_name" => "نام خانوادگی",
+        "phone" => "شماره تماس",
+        "user_name" => "نام کاربری",
+        "address" => "آدرس",
     ),
 
 

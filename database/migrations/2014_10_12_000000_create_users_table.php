@@ -16,23 +16,23 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->unique();
             $table->string('email')->unique();
+            $table->set('role', ['user', 'admin', 'shop'])->default('user');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->set('role', ['user','admin','shop'])->default('user');
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
-            $table->string('profile_photo_path', 2048)->nullable();
+            $table->text('profile_photo_path')->nullable();
             $table->timestamps();
         });
 
         User::create([
             'name' => 'admin',
             'email' => 'icpherking@gmail.com',
+            'role' => 'admin',
             'email_verified_at' => now(),
             'password' => bcrypt('admin'),
-            'role' => 'admin',
         ]);
     }
 
