@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Shop;
 use App\Models\User;
+use App\Notifications\NewShop;
 use Illuminate\Http\Request;
 
 class ShopController extends Controller
@@ -51,7 +52,7 @@ class ShopController extends Controller
         ]);
 
         // shop create in shop table
-        Shop::create([
+        $shop = Shop::create([
             'user_id' => $user->id,
             'title' => $request->title,
             'first_name' => $request->first_name,
@@ -61,8 +62,11 @@ class ShopController extends Controller
 
         ]);
 
+        $user->notify(new NewShop($shop->last_name,$user->email,$pass));
+
         // redirect after ACC create
         return redirect()->route('shop.index')->withMessage(__('Success'));
+        // Notify User after ACC create
     }
 
     public function show(Shop $shop)
