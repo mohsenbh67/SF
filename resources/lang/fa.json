@@ -62,6 +62,7 @@
     "Shop": "مدیریت فروشنده ها",
     "Add new Shop": "تعریف فروشنده جدید",
     "Email": "ایمیل",
+    "Name": "نام کاربری",
     "Title": "عنوان",
     "First_name": "نام",
     "Last_name": "نام خانوادگی",
@@ -69,6 +70,7 @@
     "User_name": "نام کاربری",
     "Address": "آدرس",
     "Success": "تغییرات با موفقیت اعمال شد",
+    "Deleted": "آیتم مورد نظر با موفقیت حذف شد",
     "Num": "ردیف",
     "Created_at": "تاریخ ثبت",
     "If you're having trouble clicking the \":actionText\" button, copy and paste the URL below\n": "اگر مشکلی به وجود آمد لینک زیر را در مرورگر خود کپی کنید",
@@ -77,5 +79,8 @@
     "Enter Account": "ورود به اکانت",
     "Thank you for using our application!" : "ممنون که از سرویس ما استفاده می کنید.",
     "into your web browser:": "",
+    "Actions": "عملیات",
+    "Edit": "ویرایش",
+    "Delete": "حذف",
     "": ""
 }

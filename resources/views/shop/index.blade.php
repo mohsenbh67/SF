@@ -22,7 +22,10 @@
                             <th scope="col">{{__('Title')}}</th>
                             <th scope="col">{{__('First_name')}} و {{__('Last_name')}} </th>
                             <th scope="col">{{__('Phone')}}</th>
+                            <th scope="col">{{__('Email')}}</th>
+                            <th scope="col">{{__('Name')}}</th>
                             <th scope="col">{{__('Created_at')}}</th>
+                            <th scope="col" colspan="2" class="text-center">{{__('Actions')}}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -32,7 +35,23 @@
                                 <td>{{$shop->title}}</td>
                                 <td>{{$shop->full_name}}</td>
                                 <td>{{$shop->phone}}</td>
+                                <td>{{$shop->user->email ?? '-'}}</td>
+                                <td>{{$shop->user->name ?? '-'}}</td>
                                 <td>{{persianDate($shop->created_at)}}</td>
+                                <td>
+                                    <a href="{{route('shop.edit', $shop->id)}}" class="inline-flex items-center px-4 py-2 bg-green-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-400 active:bg-green-600 focus:outline-none focus:border-green-600 focus:ring focus:ring-green-200 disabled:opacity-25 transition">
+                                        {{__('Edit')}}
+                                    </a>
+                                </td>
+                                <td>
+                                    <form action="{{route('shop.destroy',$shop->id)}}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="button" class="deleteshop-btn inline-flex items-center px-4 py-2 bg-orange-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-orange-400 active:bg-orange-600 focus:outline-none focus:border-orange-600 focus:ring focus:ring-orange-200 disabled:opacity-25 transition">
+                                            {{__('Delete')}}
+                                        </button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

@@ -18,5 +18,10 @@ class Shop extends Model
         return $full_name;
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 
 }
