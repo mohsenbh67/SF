@@ -4,5 +4,9 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
-ali111
+
+    @admin
+        admin
+    @endadmin
+
 </x-app-layout>

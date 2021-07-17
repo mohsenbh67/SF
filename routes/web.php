@@ -13,3 +13,4 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 // Custom Routes
 Route::resource('shop','ShopController');
+Route::resource('product','ProductController');

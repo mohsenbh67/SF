@@ -12,7 +12,7 @@ class CheckAdmin
     {
         $user = auth()->user();
 
-        if ($user && $user->role == 'admin') {
+        if ($user && $user->is('admin')) {
             return $next($request);
         } else {
             abort(403);
