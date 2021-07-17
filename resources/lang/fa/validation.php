@@ -103,7 +103,10 @@ return [
         "last_name" => "نام خانوادگی",
         "phone" => "شماره تماس",
         "user_name" => "نام کاربری",
-        "address" => "آدرس",
+        "price" => "قیمت",
+        "discount" => "تخفیف",
+        "image" => "تصویر",
+        "description" => "توضیحات",
     ),
 
 

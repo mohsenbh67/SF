@@ -44,6 +44,6 @@ class User extends Authenticatable
 
     public function is($role)
     {
-        return $role = $this->role;
+        return $role == $this->role;
     }
 }

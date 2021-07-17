@@ -61,6 +61,7 @@
     "Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.": "اگر حساب شما حذف شود تمام اطلاعات شما نیز حذف میشود. قبل از حذف اکانت لطفا داده هایی که به آنها نیاز دارید را بکاپ بگیرید.",
     "Shop": "مدیریت فروشنده ها",
     "Add new Shop": "تعریف فروشنده جدید",
+    "Add new Product": "تعریف محصول جدید",
     "Email": "ایمیل",
     "Name": "نام کاربری",
     "Title": "عنوان",
@@ -83,5 +84,9 @@
     "Edit": "ویرایش",
     "Delete": "حذف",
     "Product": "مدیریت محصولات",
-    "": ""
+    "Image": "تصویر",
+    "Discount": "تخفیف",
+    "Price": "قیمت",
+    "Description": "توضیحات",
+    "Description": "توضیحات"
 }

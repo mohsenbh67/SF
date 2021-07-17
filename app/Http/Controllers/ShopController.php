@@ -70,11 +70,6 @@ class ShopController extends Controller
         // Notify User after ACC create
     }
 
-    public function show(Shop $shop)
-    {
-        //
-    }
-
     public function edit(Shop $shop)
     {
         return view('shop.form', compact('shop'));
