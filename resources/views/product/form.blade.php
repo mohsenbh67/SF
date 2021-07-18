@@ -8,7 +8,7 @@
     @if ($product->image)
 
             <div class="flex justify-between mb-3">
-                <h4> @php echo __('Cuurent_image') @endphp </h4>
+                <h4> @php echo __('Current_image') @endphp </h4>
                 <img src="{{asset($product->image)}}" width="250px" alt="Image">
             </div>
             <hr>

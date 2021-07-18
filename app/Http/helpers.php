@@ -27,3 +27,9 @@ function randomSHA()
 {
     return bin2hex(random_bytes(10));
 }
+
+function currentShopId($value='')
+{
+    $shop = \App\Models\Shop ::where('user_id', auth()->id())->first();
+    return $shop->id ?? 0;
+}
