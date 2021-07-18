@@ -44,13 +44,20 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate($this->validationRules);
+        $currentUser = auth()->user();
+        if ($currentUser->is('admin')) {
+            $data['shop_id'] = $request->shop_id;
+        }else {
+            $shop = Shop::where('user_id', auth()->id())->firstOrFail();
+            $data['shop_id'] = $shop->id;
+        }
 
-
-        $shop = Shop::where('user_id', auth()->id())->firstOrFail();
+        if (!$data['discount']) {
+            $data['discount'] = 0;
+        }
         if (isset($data['image'])  && $data['image']) {
             $data['image']= upload($data['image']);
         }
-        $data['shop_id'] = $shop->id;
 
         Product::create($data);
         return redirect()->route('product.index')->withMessage(__('Success'));
