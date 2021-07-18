@@ -14,6 +14,20 @@
             <hr>
     @endif
 
+
+    @admin
+        <div class="flex justify-center mb-5">
+            <div class="w-50">
+                <select class="select2" name="shop_id">
+                    <option value="">--{{__('Choose')}}--</option>
+                    @foreach ($shops as $key => $shop)
+                        <option value="$shop->id">{{$shop->title}}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+    @endadmin
+
     <form class="grid grid-cols-4 gap-4" enctype="multipart/form-data" action="{{$product->id ? route('product.update', $product->id) : route('product.store')}}" method="post">
         @csrf
         @if ($product->id)

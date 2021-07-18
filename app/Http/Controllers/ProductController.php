@@ -37,7 +37,8 @@ class ProductController extends Controller
     public function create()
     {
         $product = new Product;
-        return view('product.form', compact('product'));
+        $shops = Shop::all();
+        return view('product.form', compact('product', 'shops'));
     }
 
     public function store(Request $request)
@@ -57,7 +58,8 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
-        return view('product.form', compact('product'));
+        $shops = Shop::all();
+        return view('product.form', compact('product', 'shops'));
     }
 
 
