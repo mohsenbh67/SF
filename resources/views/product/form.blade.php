@@ -5,6 +5,15 @@
         </h2>
     </x-slot>
 
+    @if ($product->image)
+
+            <div class="flex justify-between mb-3">
+                <h4> @php echo __('Cuurent_image') @endphp </h4>
+                <img src="{{asset($product->image)}}" width="250px" alt="Image">
+            </div>
+            <hr>
+    @endif
+
     <form class="grid grid-cols-4 gap-4" enctype="multipart/form-data" action="{{$product->id ? route('product.update', $product->id) : route('product.store')}}" method="post">
         @csrf
         @if ($product->id)

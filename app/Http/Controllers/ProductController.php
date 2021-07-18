@@ -39,6 +39,9 @@ class ProductController extends Controller
 
 
         $shop = Shop::where('user_id', auth()->id())->firstOrFail();
+        if ($data['image'] && isset($data['image'])) {
+            $data['image']= upload($data['image']);
+        }
         $data['shop_id'] = $shop->id;
 
         Product::create($data);
