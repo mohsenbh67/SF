@@ -77,6 +77,11 @@ class ProductController extends Controller
             $data['image']= upload($data['image']);
         }
 
+        $currentUser = auth()->user();
+        if ($currentUser->is('admin')) {
+            $data['shop_id'] = $request->shop_id;
+        }
+
         $product->update($data);
         return redirect()->route('product.index')->withMessage(__('Success'));
     }

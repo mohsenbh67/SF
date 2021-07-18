@@ -25,8 +25,8 @@
                             <th scope="col">{{__('Title')}}</th>
                             <th scope="col">{{__('Price')}}</th>
                             <th scope="col">{{__('Discount')}}</th>
+                            <th scope="col">{{__('Pay')}}</th>
                             <th scope="col">{{__('Image')}}</th>
-                            <th scope="col">{{__('Description')}}</th>
                             <th scope="col">{{__('Created_at')}}</th>
                             <th scope="col" colspan="2" class="text-center">{{__('Actions')}}</th>
                         </tr>
@@ -36,17 +36,17 @@
                             <tr>
                                 <th scope="row">{{$key+1}}</th>
                                 @admin
-                                <td>{{'...'}}</td>
+                                <td>{{$product->shop->title ?? '-'}}</td>
                                 @endadmin
                                 <td>{{$product->title}}</td>
                                 <td>{{number_format($product->price)}}</td>
                                 <td>{{$product->discount ?? 0}}</td>
+                                <td>{{$product->pay}}</td>
                                 @if ($product->image)
                                     <td class="text-green-500">{{__('Have')}}</td>
                                 @else
                                     <td class="text-red-500">{{__('Not_have')}}</td>
                                 @endif
-                                <td>{{$product->description ?? '-'}}</td>
                                 <td>{{persianDate($product->created_at)}}</td>
                                 <td>
                                     <a href="{{route('product.edit', $product->id)}}" class="inline-flex items-center px-4 py-2 bg-green-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-400 active:bg-green-600 focus:outline-none focus:border-green-600 focus:ring focus:ring-green-200 disabled:opacity-25 transition">
