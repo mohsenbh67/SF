@@ -22,3 +22,26 @@ a:hover{
     margin-right: auto;
     margin-left: auto;
 }
+
+select{
+    border-radius: 6px;
+    border-color: rgb(212, 212, 212);
+}
+
+
+.select2-container .select2-selection--single{
+    height: 42px;
+        border-color: rgb(212, 212, 212)
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered{
+    line-height: 42px;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow{
+    top: 8px;
+}
+
+input[type=checkbox]{
+    border-radius: 3px;
+    border-color: rgb(212, 212, 212);
+}

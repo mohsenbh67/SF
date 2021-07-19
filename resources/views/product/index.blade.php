@@ -18,31 +18,32 @@
             <div class="">
                 <form class="flex justify-center items-center flex-wrap">
                     <div class="w-25 p-3">
-                        <label class="block mb-3">{{__('Choose_shop')}}</label>
-                        <select class="select2" name="S">
+                        <label class="block">{{__('Choose_shop')}}</label>
+                        <select class="select2" name="s">
                             <option value="">--{{__('Choose')}}--</option>
                             @foreach ($shops as $shop)
-                                <option value="{{$shop->id}}" @if (request('S') == $shop->id) selected @endif>{{$shop->title}}</option>
+                                <option value="{{$shop->id}}" @if (request('s') == $shop->id) selected @endif>{{$shop->title}}</option>
                             @endforeach
                         </select>
                     </div>
 
                     <div class="w-25 p-3">
-                        <x-jet-label for="T" value="{{__('Title')}}" />
-                        <x-jet-input id="T" class="block mt-2 w-full" type="text" name="T" :value="request('T')"/>
+                        <x-jet-label for="t" value="{{__('Title')}}" />
+                        <x-jet-input id="t" class="block mt-2 w-full" type="text" name="t" :value="request('t')"/>
                     </div>
 
                     <div class="w-25 p-3 center">
                         <x-jet-label for="sort" value="{{__('Sort')}}" />
-                        <select class="" name="">
-                            <option value="1">{{__('H_price')}}</option>
-                            <option value="2">{{__('L_price')}}</option>
-                            <option value="3">{{__('Newest')}}</option>
-                            <option value="4">{{__('Oldest')}}</option>
+                        <select class="w-100" name="o">
+                            <option value="">--{{__('Choose')}}--</option>
+                            <option value="1" @if (request('o')== 1) selected @endif>{{__('H_price')}}</option>
+                            <option value="2" @if (request('o')== 2) selected @endif>{{__('L_price')}}</option>
+                            <option value="3" @if (request('o')== 3) selected @endif>{{__('Newest')}}</option>
+                            <option value="4" @if (request('o')== 4) selected @endif>{{__('Oldest')}}</option>
                         </select>
                     </div>
                     <div class="w-25 p-3">
-                        <label for="">
+                        <label>
                             <input type="checkbox" name="Tr" value="1">
                             {{__('Show_deleted')}}
                         </label>
