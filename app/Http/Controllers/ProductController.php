@@ -24,14 +24,14 @@ class ProductController extends Controller
 
     public function index()
     {
-
+        $shops = Shop::all();
         if (auth()->user()->is('admin')) {
             $products = Product::all();
         }else {
                 $products = Product::where('shop_id',currentShopId())->get();
             }
 
-        return view('product.index', compact('products'));
+        return view('product.index', compact('products','shops'));
     }
 
     public function create()

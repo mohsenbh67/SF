@@ -17,3 +17,8 @@ label{
 a:hover{
     text-decoration: none;
 }
+
+.center{
+    margin-right: auto;
+    margin-left: auto;
+}
