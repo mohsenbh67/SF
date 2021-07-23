@@ -13,4 +13,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 // Custom Routes
 Route::resource('shop','ShopController')->except('show');
+Route::post('product/{id}/restore','ProductController@restore')->name('product.restore');
 Route::resource('product','ProductController')->except('show');

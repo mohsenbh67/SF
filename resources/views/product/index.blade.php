@@ -11,12 +11,11 @@
         </a>
     </div>
 
-        @if ($products->count())
             <hr class="w-100 my-2">
 
-            @admin
             <div class="">
                 <form class="flex justify-center items-center flex-wrap">
+                    @admin
                     <div class="w-25 p-3">
                         <label class="block">{{__('Choose_shop')}}</label>
                         <select class="select2" name="s">
@@ -26,6 +25,7 @@
                             @endforeach
                         </select>
                     </div>
+                    @endadmin
 
                     <div class="w-25 p-3">
                         <x-jet-label for="t" value="{{__('Title')}}" />
@@ -44,7 +44,7 @@
                     </div>
                     <div class="w-25 p-3">
                         <label>
-                            <input type="checkbox" name="Tr" value="1">
+                            <input type="checkbox" name="Tr" value="1" @if (request('Tr')) checked @endif>
                             {{__('Show_deleted')}}
                         </label>
 
@@ -60,9 +60,10 @@
                 </form>
             </div>
 
-            @endadmin
 
 
+
+            @if ($products->count())
 
             <div class="my-3">
                 <table class="table table-striped table-hover">
@@ -98,20 +99,34 @@
                                     <td class="text-red-500">{{__('Not_have')}}</td>
                                 @endif
                                 <td>{{persianDate($product->created_at)}}</td>
-                                <td>
-                                    <a href="{{route('product.edit', $product->id)}}" class="inline-flex items-center px-4 py-2 bg-green-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-400 active:bg-green-600 focus:outline-none focus:border-green-600 focus:ring focus:ring-green-200 disabled:opacity-25 transition">
-                                        {{__('Edit')}}
-                                    </a>
-                                </td>
-                                <td>
-                                    <form action="{{route('product.destroy',$product->id)}}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="button" class="deleteshop-btn inline-flex items-center px-4 py-2 bg-orange-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-orange-400 active:bg-orange-600 focus:outline-none focus:border-orange-600 focus:ring focus:ring-orange-200 disabled:opacity-25 transition">
-                                            {{__('Delete')}}
-                                        </button>
-                                    </form>
-                                </td>
+
+                                @if ($product->trashed())
+                                    <td colspan="2">
+                                        <form action="{{route('product.restore',$product->id)}}" method="post">
+                                            @csrf
+                                            <button type="submit" class="inline-flex items-center px-4 py-2 bg-orange-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-orange-400 active:bg-orange-600 focus:outline-none focus:border-orange-600 focus:ring focus:ring-orange-200 disabled:opacity-25 transition">
+                                                {{__('Restore')}}
+                                            </button>
+                                        </form>
+                                    </td>
+                                @else
+                                    <td>
+                                        <a href="{{route('product.edit', $product->id)}}" class="inline-flex items-center px-4 py-2 bg-green-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-400 active:bg-green-600 focus:outline-none focus:border-green-600 focus:ring focus:ring-green-200 disabled:opacity-25 transition">
+                                            {{__('Edit')}}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <form action="{{route('product.destroy',$product->id)}}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="button" class="deleteshop-btn inline-flex items-center px-4 py-2 bg-orange-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-orange-400 active:bg-orange-600 focus:outline-none focus:border-orange-600 focus:ring focus:ring-orange-200 disabled:opacity-25 transition">
+                                                {{__('Delete')}}
+                                            </button>
+                                        </form>
+                                    </td>
+                                @endif
+
+
                             </tr>
                         @endforeach
                     </tbody>
