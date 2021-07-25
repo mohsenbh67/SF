@@ -91,6 +91,7 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
+        checkPolicy('product', $product);
         $shops = Shop::all();
         return view('product.form', compact('product', 'shops'));
     }
@@ -98,6 +99,7 @@ class ProductController extends Controller
 
     public function update(Request $request, Product $product)
     {
+        checkPolicy('product', $product);
         $data = $request->validate($this->validationRules);
         if (isset($data['image'])  && $data['image']) {
             $data['image']= upload($data['image']);
@@ -115,12 +117,14 @@ class ProductController extends Controller
 
     public function destroy(Product $product)
     {
+        checkPolicy('product', $product);
         $product->delete();
         return redirect()->route('product.index')->withMessage(__('Deleted'));
     }
 
     public function restore($id)
     {
+        checkPolicy('product', $product);
         $product = Product::withTrashed()->where('id', $id)->restore();
         return redirect()->route('product.index')->withMessage(__('Success'));
     }

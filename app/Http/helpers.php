@@ -33,3 +33,18 @@ function currentShopId($value='')
     $shop = \App\Models\Shop ::where('user_id', auth()->id())->first();
     return $shop->id ?? 0;
 }
+
+function checkPolicy($case, $object)
+{
+    switch ($case) {
+        case 'product':
+            if ($object->shop_id != currentShopId()) {
+                abort(404);
+            }
+            break;
+
+        default:
+            abort(404);
+            break;
+    }
+}
