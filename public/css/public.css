@@ -9,6 +9,10 @@ body {
     text-align: right;
 }
 
+h1,h2,h3,h4,h5{
+    margin: 0px;
+}
+
 .dropdown-menu{
     right: 0;
     left: auto;
@@ -16,4 +20,21 @@ body {
 
 .card-body{
     box-shadow: 2px 2px 4px gray;
+}
+
+.price_removed{
+    text-decoration: line-through;
+}
+
+.product_box{
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin: 10px;
+    height: 500px;
+    width: 300px;
+}
+
+.product_box > img{
+    width: 100%;
+    max-height: 250px;
 }

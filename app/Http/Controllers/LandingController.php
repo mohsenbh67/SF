@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
+use App\Models\Shop;
 
 class LandingController extends Controller
 {
@@ -17,7 +19,8 @@ class LandingController extends Controller
 
     public function products()
     {
-        return view('landing.products');
+        $products = Product::all();
+        return view('landing.products' , compact('products'));
     }
     public function shops()
     {
