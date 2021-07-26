@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'iranyekan';
+    src: url(../fonts/iranyekan.woff);
+}
+
+body {
+    font-family: 'iranyekan';
+    direction: rtl;
+    text-align: right;
+}
+
+.dropdown-menu{
+    right: 0;
+    left: auto;
+}
+
+.card-body{
+    box-shadow: 2px 2px 4px gray;
+}
