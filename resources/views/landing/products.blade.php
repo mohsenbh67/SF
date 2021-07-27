@@ -14,7 +14,14 @@
                         <span>{{number_format($product->pay)}}</span>
                     </p>
                 </div>
-                <p class="text-left">تومان</p>
+                <div class="d-flex justify-content-between">
+                    <a href="#">{{$product->shop->title ?? '-'}}</a>
+                    <p class="text-left">{{__('$')}}</p>
+                </div>
+                <div class="text-center">
+                    <button type="button" class="btn btn-primary btn-sm">{{__('Add to cart')}}</button>
+
+                </div>
                 <hr>
                 <p>{{$product->description}}</p>
             </div>
