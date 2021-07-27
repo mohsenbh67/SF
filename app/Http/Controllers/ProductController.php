@@ -56,7 +56,7 @@ class ProductController extends Controller
             }
         }
 
-        $products = $products->get();
+        $products = $products->paginate(10);
         return view('product.index', compact('products','shops'));
     }
 

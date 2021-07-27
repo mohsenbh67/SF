@@ -132,6 +132,9 @@
                     </tbody>
                 </table>
             </div>
+            <div class="mt-3" style="direction : ltr">
+                {{$products->links()}}
+            </div>
 
         @endif
 

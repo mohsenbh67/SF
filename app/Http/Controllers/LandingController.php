@@ -19,7 +19,7 @@ class LandingController extends Controller
 
     public function products()
     {
-        $products = Product::all();
+        $products = Product::paginate(15);
         return view('landing.products' , compact('products'));
     }
     public function shops()
