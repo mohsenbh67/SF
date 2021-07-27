@@ -4,7 +4,7 @@
     <div class="row d-flex justify-content-center">
         @foreach ($products as $key => $product)
             <div class="col-md-3 product_box">
-                <img class="my-2" src="{{asset($product->image)}}" alt="{{$product->title}}">
+                <img class="my-2" src="{{asset($product->image ?? 'img/empty.jpg')}}" alt="{{$product->title}}">
                 <div class="d-flex justify-content-between">
                     <h5>{{$product->title}}</h5>
                     <p>
