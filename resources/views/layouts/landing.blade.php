@@ -18,7 +18,7 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav">
+                    <ul class="nav navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link @unless (currentLandingPage()) active @endunless" href="{{url('/')}}">{{__('Home')}}</a>
                         </li>
@@ -29,7 +29,12 @@
                             <a class="nav-link" href="{{route('landing', 'shops')}}"> {{__('Shops')}}</a>
                         </li>
                         <li class="nav-item @if (currentLandingPage() == 'cart') active @endif">
-                            <a class="nav-link" href="{{route('landing', 'cart')}}"> {{__('Cart')}}</a>
+                            <a class="nav-link" href="{{route('landing', 'cart')}}"> {{__('Cart')}}
+                                <span class="cart_number"> 0 </span>
+                            </a>
+                        </li>
+                        <li class="nav-item" id="Acc">
+                            <a class="nav-link btn btn-primary text-white" href="{{route('login')}}"> {{__('Account')}}</a>
                         </li>
                     </ul>
                 </div>
@@ -38,6 +43,15 @@
         <div class="container">
             <div class="card mt-3">
                 <div class="card-body">
+
+                    @if ($error = session('error'))
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                          <strong>{{$error}}</strong>
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                    @endif
 
                     @yield('content')
 

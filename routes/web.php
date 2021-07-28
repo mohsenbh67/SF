@@ -19,3 +19,6 @@ Route::resource('product','ProductController')->except('show');
 
 // public Routes
 Route::get('landing/{page}','LandingController@loadpage')->name('landing');
+
+// add to cart
+Route::post('cart/add/{product}','CartController@add')->name('cart.add');

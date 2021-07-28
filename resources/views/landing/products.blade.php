@@ -45,10 +45,10 @@
                     <a href="#">{{$product->shop->title ?? '-'}}</a>
                     <p class="text-left">{{__('$')}}</p>
                 </div>
-                <div class="text-center">
-                    <button type="button" class="btn btn-primary btn-sm">{{__('Add to cart')}}</button>
-
-                </div>
+                <form class="text-center" method="post" action="{{route('cart.add', $product->id)}}">
+                    @csrf
+                    <button type="submit" class="btn btn-primary btn-sm">{{__('Add to cart')}}</button>
+                </form>
                 <hr>
                 <p>{{$product->description}}</p>
             </div>
