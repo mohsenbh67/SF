@@ -15,10 +15,10 @@ class CreateCartItemsTable extends Migration
     {
         Schema::create('cart_items', function (Blueprint $table) {
             $table->id();
-            $table->unsingedInteger('cart_id');
-            $table->unsingedInteger('product_id');
-            $table->unsingedSmallInteger('count');
-            $table->unsingedBigInteger('payable');
+            $table->unsignedInteger('cart_id');
+            $table->unsignedInteger('product_id');
+            $table->unsignedSmallInteger('count');
+            $table->unsignedBigInteger('payable');
             $table->timestamps();
         });
     }
