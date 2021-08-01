@@ -47,7 +47,13 @@
                 </div>
                 <form class="text-center" method="post" action="{{route('cart.add', $product->id)}}">
                     @csrf
-                    <button type="submit" class="btn btn-primary btn-sm">{{__('Add to cart')}}</button>
+                    @if ($cart_item = $product->isInCart())
+                        <button type="submit" class="btn btn-primary btn-sm">+</button>
+                        {{$cart_item->count}}
+                        <button type="submit" class="btn btn-primary btn-sm">-</button>
+                    @else
+                        <button type="submit" class="btn btn-primary btn-sm">{{__('Add to cart')}}</button>
+                    @endif
                 </form>
                 <hr>
                 <p>{{$product->description}}</p>

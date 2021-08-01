@@ -14,12 +14,18 @@ class CartController extends Controller
         $currentLoggedInUser = auth()->user();
         if ($currentLoggedInUser) {
             $cart = Cart::firstOrCreate(['user_id' => $currentLoggedInUser->id ]);
-            $cartItem = CartItem::create([
-                'cart_id' => $cart->id,
-                'product_id' => $product->id,
-                'count' => 1,
-                'payable' => $product->pay,
-            ]);
+            if ($cart_item = $product->isInCart()) {
+                $cart_item->count++;
+                $cart_item->payable = $cart_item->count * $product->pay;
+                $cart_item->save();
+            }else {
+                $cartItem = CartItem::create([
+                    'cart_id' => $cart->id,
+                    'product_id' => $product->id,
+                    'count' => 1,
+                    'payable' => $product->pay,
+                ]);
+            }
             return back()->withMessage(__('Item added'));
         }else {
             return back()->withError(__('Please login'));

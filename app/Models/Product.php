@@ -21,4 +21,14 @@ class Product extends Model
     {
         return $this->belongsTo(Shop::class);
     }
+    public function isInCart()
+    {
+        $user = auth()->user();
+        if ($user) {
+            $cart = Cart::where('user_id', $user->id)->first();
+            if ($cart) {
+                return $cart_item = CartItem::where('cart_id',$cart->id)->where('product_id',$this->id)->first();
+            }
+        }
+    }
 }
