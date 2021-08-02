@@ -16,13 +16,18 @@ class CartController extends Controller
         if ($currentLoggedInUser) {
             $cart = Cart::firstOrCreate(['user_id' => $currentLoggedInUser->id ]);
             if ($cart_item = $product->isInCart()) {
-                if ($type == 'add') {
-                    $cart_item->count++;
+                if ($type == 'minus' && $cart_item->count == 1) {
+                    $cart_item->delete();
+                    return back()->withMessage(__('Item deleted'));
                 }else {
-                    $cart_item->count--;
+                    if ($type == 'add') {
+                        $cart_item->count++;
+                    }else {
+                        $cart_item->count--;
+                    }
+                    $cart_item->payable = $cart_item->count * $product->pay;
+                    $cart_item->save();
                 }
-                $cart_item->payable = $cart_item->count * $product->pay;
-                $cart_item->save();
             }else {
                 $cartItem = CartItem::create([
                     'cart_id' => $cart->id,
@@ -35,5 +40,11 @@ class CartController extends Controller
         }else {
             return back()->withError(__('Please login'));
         }
+    }
+
+    public function remove(CartItem $cart_item)
+    {
+        $cart_item->delete();
+        return back()->withMessage(__('Item deleted'));
     }
 }
