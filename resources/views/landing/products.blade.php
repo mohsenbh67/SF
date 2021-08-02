@@ -45,14 +45,14 @@
                     <a href="#">{{$product->shop->title ?? '-'}}</a>
                     <p class="text-left">{{__('$')}}</p>
                 </div>
-                <form class="text-center" method="post" action="{{route('cart.add', $product->id)}}">
+                <form class="text-center" method="post" action="{{route('cart.manage', $product->id)}}">
                     @csrf
                     @if ($cart_item = $product->isInCart())
-                        <button type="submit" class="btn btn-primary btn-sm">+</button>
+                        <button type="submit" name="type" value="add" class="btn btn-primary btn-sm">+</button>
                         {{$cart_item->count}}
-                        <button type="submit" class="btn btn-primary btn-sm">-</button>
+                        <button type="submit" name="type" value="minus" class="btn btn-primary btn-sm">-</button>
                     @else
-                        <button type="submit" class="btn btn-primary btn-sm">{{__('Add to cart')}}</button>
+                        <button type="submit" name="type" value="add" class="btn btn-primary btn-sm">{{__('Add to cart')}}</button>
                     @endif
                 </form>
                 <hr>

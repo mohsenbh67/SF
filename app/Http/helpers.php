@@ -56,3 +56,15 @@ function currentLandingPage()
             return $route->parameters['page'];
         }
     }
+
+function cartCount()
+{
+    $user = auth()->user();
+    $count = 0;
+    if ($user) {
+        $cart = \App\Models\Cart::where('user_id', $user->id)->first();
+        if ($cart) {
+            return $cart_item = \App\Models\CartItem::where('cart_id',$cart->id)->sum('count');
+        }
+    }
+}

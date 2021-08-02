@@ -9,13 +9,18 @@ use App\Models\CartItem;
 
 class CartController extends Controller
 {
-    public function add(Product $product)
+    public function manage(Product $product, Request $request)
     {
+        $type = $request->type;
         $currentLoggedInUser = auth()->user();
         if ($currentLoggedInUser) {
             $cart = Cart::firstOrCreate(['user_id' => $currentLoggedInUser->id ]);
             if ($cart_item = $product->isInCart()) {
-                $cart_item->count++;
+                if ($type == 'add') {
+                    $cart_item->count++;
+                }else {
+                    $cart_item->count--;
+                }
                 $cart_item->payable = $cart_item->count * $product->pay;
                 $cart_item->save();
             }else {

@@ -46,4 +46,11 @@ class LandingController extends Controller
     {
         return view('landing.shops');
     }
+    public function cart()
+    {
+        $user_id = auth()->id();
+        $cart = Cart::where('user_id', $user_id)->first();
+        return view('landing.cart', compact('cart'));
+    }
+
 }
