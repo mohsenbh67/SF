@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Shop;
+use App\Models\Cart;
 
 class LandingController extends Controller
 {
@@ -42,10 +43,12 @@ class LandingController extends Controller
         $products = $products->paginate(15);
         return view('landing.products' , compact('products'));
     }
+
     public function shops()
     {
         return view('landing.shops');
     }
+
     public function cart()
     {
         $user_id = auth()->id();
