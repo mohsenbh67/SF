@@ -30,7 +30,12 @@
                         </li>
                         <li class="nav-item @if (currentLandingPage() == 'cart') active @endif">
                             <a class="nav-link" href="{{route('landing', 'cart')}}"> {{__('Cart')}}
-                                <span class="cart_number"> {{cartCount()}} </span>
+                                <span class="cart_number">
+                                     @if (cartCount())
+                                         {{cartCount()}}
+                                     @else 0
+                                     @endif
+                                 </span>
                             </a>
                         </li>
                         <li class="nav-item" id="Acc">

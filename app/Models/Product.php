@@ -25,7 +25,7 @@ class Product extends Model
     {
         $user = auth()->user();
         if ($user) {
-            $cart = Cart::where('user_id', $user->id)->first();
+            $cart = Cart::where('user_id', $user->id)->where('finished', 0)->first();
             if ($cart) {
                 return $cart_item = CartItem::where('cart_id',$cart->id)->where('product_id',$this->id)->first();
             }

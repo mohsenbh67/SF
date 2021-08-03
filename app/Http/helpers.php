@@ -62,7 +62,7 @@ function cartCount()
     $user = auth()->user();
     $count = 0;
     if ($user) {
-        $cart = \App\Models\Cart::where('user_id', $user->id)->first();
+        $cart = \App\Models\Cart::where('user_id', $user->id)->where('finished', 0)->first();
         if ($cart) {
             return $cart_item = \App\Models\CartItem::where('cart_id',$cart->id)->sum('count');
         }

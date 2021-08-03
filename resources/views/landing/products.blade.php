@@ -49,7 +49,7 @@
                     @csrf
                     @if ($cart_item = $product->isInCart())
                         <button type="submit" name="type" value="add" class="btn btn-primary btn-sm">+</button>
-                        {{$cart_item->count}}
+                            {{$cart_item->count}}
                         <button type="submit" name="type" value="minus" class="btn btn-primary btn-sm">-</button>
                     @else
                         <button type="submit" name="type" value="add" class="btn btn-primary btn-sm">{{__('Add to cart')}}</button>

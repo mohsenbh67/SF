@@ -52,7 +52,7 @@ class LandingController extends Controller
     public function cart()
     {
         $user_id = auth()->id();
-        $cart = Cart::where('user_id', $user_id)->first();
+        $cart = Cart::where('user_id', $user_id)->where('finished' , 0)->first();
         return view('landing.cart', compact('cart'));
     }
 
