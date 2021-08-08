@@ -18,7 +18,7 @@ class CartController extends Controller
             if ($cart_item = $product->isInCart()) {
                 if ($type == 'minus' && $cart_item->count == 1) {
                     $cart_item->delete();
-                    return back()->withMessage(__('Item deleted'));
+
                 }else {
                     if ($type == 'add') {
                         $cart_item->count++;
@@ -29,16 +29,21 @@ class CartController extends Controller
                     $cart_item->save();
                 }
             }else {
-                $cartItem = CartItem::create([
+                $cart_item = CartItem::create([
                     'cart_id' => $cart->id,
                     'product_id' => $product->id,
                     'count' => 1,
                     'payable' => $product->pay,
                 ]);
             }
-            return back()->withMessage(__('Item added'));
+            return [
+                'count' => $cart_item->count,
+                'totalCount' => $cart->count
+            ];
         }else {
-            return back()->withError(__('Please login'));
+            return[
+            'error' =>   __('Please login'),
+            ];
         }
     }
 

@@ -58,3 +58,7 @@ ion-icon {
 #Acc{
     margin-right: auto;
 }
+
+.hidden{
+    display: none;
+}
