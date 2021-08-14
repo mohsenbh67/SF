@@ -20,10 +20,10 @@ ion-icon {
   font-size: 24px;
 }
 
-a{
+.btn > a{
     color: #fff;
 }
-a:hover{
+.btn > a:hover{
     color: #fff;
     text-decoration: none;
 }

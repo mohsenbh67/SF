@@ -53,14 +53,20 @@ class LandingController extends Controller
 
     public function showShop(Shop $shop)
     {
-        return view('landing.shop', compact('shop'));
+        $products = Product::where('shop_id', $shop->id)->paginate(9);
+        return view('landing.shop', compact('shop' , 'products'));
     }
 
     public function cart()
     {
         $user_id = auth()->id();
         $cart = Cart::where('user_id', $user_id)->where('finished' , 0)->first();
-        $cart_item = CartItem::where('cart_id', $cart->id)->first();
+        if ($cart) {
+            $cart_item = CartItem::where('cart_id', $cart->id)->first();
+
+        }else {
+            $cart_item = null;
+        }
         return view('landing.cart', compact('cart','cart_item'));
     }
 
