@@ -20,6 +20,13 @@ ion-icon {
   font-size: 24px;
 }
 
+a{
+    color: #fff;
+}
+a:hover{
+    color: #fff;
+    text-decoration: none;
+}
 
 
 .dropdown-menu{
@@ -35,6 +42,14 @@ ion-icon {
     text-decoration: line-through;
 }
 
+.shop_box{
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin: 0px 10px;
+    padding: 10px 20px;
+    box-shadow: 2px 2px 8px gray;
+
+}
 .product_box{
     border: 1px solid gray;
     border-radius: 5px;

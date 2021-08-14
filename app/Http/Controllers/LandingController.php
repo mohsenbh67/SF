@@ -47,7 +47,13 @@ class LandingController extends Controller
 
     public function shops()
     {
-        return view('landing.shops');
+        $shops = shop::latest()->paginate(10);
+        return view('landing.shops', compact('shops'));
+    }
+
+    public function showShop(Shop $shop)
+    {
+        return view('landing.shop', compact('shop'));
     }
 
     public function cart()
