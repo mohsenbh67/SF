@@ -39,7 +39,7 @@ ion-icon {
     border: 1px solid gray;
     border-radius: 5px;
     margin: 10px;
-    height: 500px;
+    height: auto;
     width: 300px;
 }
 

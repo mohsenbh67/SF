@@ -18,11 +18,25 @@ $(document).on('click','.manage-cart', function() {
         },
         success: function(res){
 
+            var alertBox = form.siblings('.alert');
             var inCartDiv = form.children('.in-cart');
             var notInCartDiv = form.children('.not-in-cart');
-            inCartDiv.show();
-            notInCartDiv.hide();
-            form.find('.cart-count').text(res.count);
-            $('#cart-count').text(res.totalCount);
+
+            if (res.error) {
+                alertBox.text(res.error);
+                alertBox.show();
+            }else {
+                alertBox.hide();
+                if (res.count == 0) {
+                    inCartDiv.hide();
+                    notInCartDiv.show();
+                }else {
+                    inCartDiv.show();
+                    notInCartDiv.hide();
+                }
+                form.find('.cart-count').text(res.count);
+                $('#cart-count').text(res.totalCount);
+            }
+
     }});
 });

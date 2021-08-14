@@ -16,15 +16,17 @@ class CartController extends Controller
         if ($currentLoggedInUser) {
             $cart = Cart::firstOrCreate(['user_id' => $currentLoggedInUser->id , 'finished' => 0 ]);
             if ($cart_item = $product->isInCart()) {
-                if ($type == 'minus' && $cart_item->count == 1) {
+                if ($type == 'add') {
+                    $cart_item->count++;
+                }else {
+                    $cart_item->count--;
+                }
+
+                if ($cart_item->count == 0) {
                     $cart_item->delete();
 
                 }else {
-                    if ($type == 'add') {
-                        $cart_item->count++;
-                    }else {
-                        $cart_item->count--;
-                    }
+
                     $cart_item->payable = $cart_item->count * $product->pay;
                     $cart_item->save();
                 }

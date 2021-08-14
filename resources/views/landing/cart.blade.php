@@ -2,7 +2,7 @@
 @section('content')
 
     <div class="my-3">
-        @if ($cart)
+        @if ($cart_item)
             <table class="table table-striped table-hover">
                 <thead class="thead-dark">
                     <tr>

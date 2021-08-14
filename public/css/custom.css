@@ -45,7 +45,3 @@ input[type=checkbox]{
     border-radius: 3px;
     border-color: rgb(212, 212, 212);
 }
-
-.hidden{
-    display: none;
-}

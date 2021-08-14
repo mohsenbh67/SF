@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Shop;
 use App\Models\Cart;
+use App\Models\CartItem;
 
 class LandingController extends Controller
 {
@@ -53,7 +54,8 @@ class LandingController extends Controller
     {
         $user_id = auth()->id();
         $cart = Cart::where('user_id', $user_id)->where('finished' , 0)->first();
-        return view('landing.cart', compact('cart'));
+        $cart_item = CartItem::where('cart_id', $cart->id)->first();
+        return view('landing.cart', compact('cart','cart_item'));
     }
 
 }

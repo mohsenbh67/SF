@@ -55,7 +55,11 @@
                     <div class="not-in-cart @if ($product->isInCart()) hidden @endif">
                         <button type="button" name="type" value="add" class="manage-cart btn btn-primary btn-sm">{{__('Add to cart')}}</button>
                     </div>
+
                 </form>
+                <div class="alert alert-warning hidden mt-3">
+                </div>
+
                 <hr>
                 <p>{{$product->description}}</p>
             </div>
