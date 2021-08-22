@@ -2,7 +2,11 @@ $(document).on('click','.manage-cart', function() {
     var element = $(this);
     var type = element.attr('value');
     var form = element.parents('form');
+    var table = element.parents('td');
+    var td = table.siblings('.td');
     var url = form.attr('action');
+    var productId = td.attr('data-id');
+
 
     $.ajaxSetup({
         headers: {
@@ -36,6 +40,12 @@ $(document).on('click','.manage-cart', function() {
                 }
                 form.find('.cart-count').text(res.count);
                 $('#cart-count').text(res.totalCount);
+                td.text(parseInt(res.payable).toLocaleString());
+                $('#sum').text(parseInt(res.sum).toLocaleString());
+            }
+
+            if (res.count == 0) {
+                location.reload();
             }
 
     }});

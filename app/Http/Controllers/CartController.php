@@ -40,7 +40,9 @@ class CartController extends Controller
             }
             return [
                 'count' => $cart_item->count,
-                'totalCount' => $cart->count
+                'totalCount' => $cart->count,
+                'payable' =>$cart_item->payable,
+                'sum' =>$cart->sum
             ];
         }else {
             return[
