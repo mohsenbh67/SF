@@ -44,11 +44,17 @@
                                         {{__('Detail')}}
                                     </a>
                                 </td>
+                                @admin
                                 <td>
-                                    <button type="button" class="deleteshop-btn inline-flex items-center px-4 py-2 bg-orange-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-orange-400 active:bg-orange-600 focus:outline-none focus:border-orange-600 focus:ring focus:ring-orange-200 disabled:opacity-25 transition">
-                                        {{__('Delete')}}
-                                    </button>
+                                    <form class="" action="{{route('order.destroy', $order->id)}}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="button" class="deleteshop-btn inline-flex items-center px-4 py-2 bg-orange-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-orange-400 active:bg-orange-600 focus:outline-none focus:border-orange-600 focus:ring focus:ring-orange-200 disabled:opacity-25 transition">
+                                            {{__('Delete')}}
+                                        </button>
+                                    </form>
                                 </td>
+                                @endadmin
                             </tr>
                         @endforeach
                     </tbody>

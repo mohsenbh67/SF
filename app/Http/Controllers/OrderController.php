@@ -4,9 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cart as Order;
+use App\Models\CartItem ;
 
 class OrderController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware(['auth', 'admin'])->only('destroy');
+    }
+
 
     public function index()
     {
@@ -19,8 +27,10 @@ class OrderController extends Controller
         return view('order.show', compact('order'));
     }
 
-    public function destroy($id)
+    public function destroy(Order $order)
     {
-
+        $order->delete();
+        CartItem::where('cart_id', $order->id)->delete();
+        return back()->withMessage(__('Deleted'));
     }
 }
