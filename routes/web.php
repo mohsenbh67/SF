@@ -16,6 +16,7 @@ Route::resource('shop','ShopController')->except('show');
 Route::post('product/{id}/restore','ProductController@restore')->name('product.restore');
 Route::resource('product','ProductController')->except('show');
 Route::resource('order','OrderController')->only(['index' ,'show', 'destroy']);
+Route::post('order/status/{cart_item}','OrderController@checkStatus')->name('order.status');
 
 
 // public Routes

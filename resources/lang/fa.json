@@ -45,6 +45,7 @@
     "You have enabled two factor authentication.": "شما تایید دو مرحله ای را برای حساب خود فعال کرده اید.",
     "When two factor authentication is enabled, you will be prompted for a secure, random token during authentication. You may retrieve this token from your phone's Google Authenticator application.": "زمانی که تایید دومرحله ای فعال شود، یک توکن ایمن از طریق Google Authenticator برای شما ارسال میشود",
     "Enable": "فعال سازی",
+    "Submit": "تایید",
     "Disable": "غیرفعال کردن",
     "Cancel": "انصراف",
     "For your security, please confirm your password to continue.": "جهت امنیت بیشتر، لطفا رمز حساب خود را وارد کنید.",
@@ -73,6 +74,7 @@
     "Phone": "شماره تماس",
     "User_name": "نام کاربری",
     "Address": "آدرس",
+    "Status change": "تغییر وضعیت",
     "Orders": "لیست سفارشات",
     "Success": "تغییرات با موفقیت اعمال شد",
     "Deleted": "آیتم مورد نظر با موفقیت حذف شد",
@@ -112,7 +114,7 @@
     "Please login": "لطفا ابتدا وارد حساب کاربری خود شوید.",
     "Account": "حساب کاربری",
     "User": "کاربر",
-    "Status": "کاربر",
+    "Status": "وضعیت",
     "Code": "کد پیگیری",
     "Total price": "قیمت کل",
     "Count": "تعداد",
@@ -123,5 +125,8 @@
     "Detail": "جزئیات",
     "Orders detail": "جزئیات سفارش",
     "Back": "بازگشت",
-    "Time": "زمان"
+    "Time": "زمان",
+    "Fresh order": "سفارش جدید",
+    "Delivered": "تحویل داده شده",
+    "Rejected": "رد شده"
 }

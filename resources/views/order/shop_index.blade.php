@@ -23,7 +23,8 @@
                             <th scope="col">{{__('Pay')}} ({{__('$')}})</th>
                             <th scope="col">{{__('Created_at')}}</th>
                             <th scope="col">{{__('Time')}}</th>
-                            {{-- <th scope="col" colspan="2" class="text-center">{{__('Actions')}}</th> --}}
+                            <th scope="col">{{__('Status')}}</th>
+                            <th scope="col" class="text-center">{{__('Status change')}}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -36,6 +37,27 @@
                                 <td>{{number_format($item->payable)}}</td>
                                 <td>{{persianDate($item->created_at)}}</td>
                                 <td>{{$item->created_at->format('H:i')}}</td>
+                                <td>
+                                    @if ($item->status == 1)
+                                        <span class="badge badge-primary px-3 py-2"> {{__('Fresh order')}} </span>
+                                    @elseif ($item->status == 2)
+                                        <span class="badge badge-success px-3 py-2"> {{__('Delivered')}} </span>
+                                    @else
+                                        <span class="badge badge-danger px-3 py-2"> {{__('Rejected')}} </span>
+                                    @endif
+                                </td>
+                                <td class="">
+                                    <form class="flex" action="{{route('order.status', $item->id)}}" method="post">
+                                        @csrf
+                                        <select class="" name="status">
+                                            <option value=""> ---</option>
+                                            <option value="1"> --{{__('Fresh order')}}-- </option>
+                                            <option value="2"> --{{__('Delivered')}}-- </option>
+                                            <option value="3"> --{{__('Rejected')}}-- </option>
+                                        </select>
+                                        <x-jet-button class="mr-3">{{ __('Submit') }}</x-jet-button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

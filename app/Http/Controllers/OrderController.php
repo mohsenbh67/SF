@@ -15,6 +15,7 @@ class OrderController extends Controller
     {
         $this->middleware('auth');
         $this->middleware(['auth', 'admin'])->only('destroy');
+        $this->middleware('admins')->only('checkStatus');
     }
 
 
@@ -43,6 +44,13 @@ class OrderController extends Controller
     {
 
         return view('order.show', compact('order'));
+    }
+
+    public function checkStatus(Request $request, CartItem $cart_item)
+    {
+        $cart_item->status = $request->status;
+        $cart_item->save();
+        return back()->withMessage(__('Success'));
     }
 
     public function destroy(Order $order)
